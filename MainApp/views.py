@@ -18,11 +18,11 @@ def home(request):
 
 def about(request):
     text = f"""
-    <h1>"Автор проекта:"</h1>
-    <small>Имя:</small> {author['name']}
-    <small>Отчество:</small> {author['midle_name']}
-    <small>Фамилия:</small> {author['last_name']}
-    <small>Телефон:</small> {author['contact_number']}
-    <small>Почта:</small> {author['email']}
+    <h1>"Автор проекта"</h1>
+    <small>Имя:</small> {author['name']}</strong> <br>
+    <small>Отчество:</small> <strong>{author['midle_name']}</strong> <br>
+    <small>Фамилия:</small> <strong>{author['last_name']}</strong> <br>
+    <small>Телефон:</small> <strong>{author['contact_number']}</strong> <br>
+    <small>Почта:</small> <strong>{author['email']}</strong>
     """
     return HttpResponse(text)
