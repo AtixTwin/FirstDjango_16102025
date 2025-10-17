@@ -37,32 +37,52 @@ def about(request):
     return HttpResponse(text)
 
 def item(request, id: int):
+
+    if id > 5:
         
-    text = f"""
-    <!doctype html>
-    <html lang="ru">
-    <h1>Товар ID #{id}</h1>
-    <h2>{items[id-1]['name']}</h2>
-    <head>
-        <meta charset="utf-8">
-        <title>{items[id-1]['name']}</title>
+        url_not_found = "https://elements-resized.envatousercontent.com/elements-cover-images/41ce1856-ce64-47eb-9cc9-d50c75ba936b?w=2038&cf_fit=scale-down&q=85&format=auto&s=c54070f24dcaa94cc414ea7eca94fe5c7ba4b8e8f8878ff1eb64517021daf0a6"  
+        
+        text = f"""<!doctype html><meta charset="utf-8">
+        <title>Товар не найден</title>
+        <h1>Tовар с ID #{id} не найден</h1>
         <style>
-        .img-fixed {{
-            width: 360px;       
-            height: 360px;      
-            object-fit: cover;  
-            object-position: center; 
-            border-radius: 10px; 
-        }}
-        </style>
-    </head>
-    <body>
-        <img class="img-fixed" src="{items[id-1]['img-url']}" alt="{items[id-1]['name']}">
-    </body> 
-    <br>
-    <br>
-    Всего на складе: <strong>{items[id-1]['quantity']}</strong>
-    </html>
-    """
+            .img-fixed {{
+                width: 360px;       
+                height: 360px;      
+                object-fit: cover;  
+                object-position: center; 
+                border-radius: 10px; 
+            }}
+            </style>
+            <img class="img-fixed" src="{url_not_found}" alt="NOT FOUND">
+        """
+    
+    else:
+        text = f"""
+        <!doctype html>
+        <html lang="ru">
+        <h1>Товар ID #{id}</h1>
+        <h2>{items[id-1]['name']}</h2>
+        <head>
+            <meta charset="utf-8">
+            <title>{items[id-1]['name']}</title>
+            <style>
+            .img-fixed {{
+                width: 360px;       
+                height: 360px;      
+                object-fit: cover;  
+                object-position: center; 
+                border-radius: 10px; 
+            }}
+            </style>
+        </head>
+        <body>
+            <img class="img-fixed" src="{items[id-1]['img-url']}" alt="{items[id-1]['name']}">
+        </body> 
+        <br>
+        <br>
+        Всего на складе: <strong>{items[id-1]['quantity']}</strong>
+        </html>
+        """
        
     return HttpResponse(text)
