@@ -42,7 +42,10 @@ def item(request, id: int):
         
         url_not_found = "https://elements-resized.envatousercontent.com/elements-cover-images/41ce1856-ce64-47eb-9cc9-d50c75ba936b?w=2038&cf_fit=scale-down&q=85&format=auto&s=c54070f24dcaa94cc414ea7eca94fe5c7ba4b8e8f8878ff1eb64517021daf0a6"  
         
-        text = f"""<!doctype html><meta charset="utf-8">
+        text = f"""
+        <!doctype html>
+        <html lang="ru">
+        <meta charset="utf-8">
         <title>Товар не найден</title>
         <h1>Tовар с ID #{id} не найден</h1>
         <style>
@@ -54,17 +57,20 @@ def item(request, id: int):
                 border-radius: 10px; 
             }}
             </style>
-            <img class="img-fixed" src="{url_not_found}" alt="NOT FOUND">
+        <img class="img-fixed" src="{url_not_found}" alt="NOT FOUND">
+        <br>
+        <br>
+        <a href="http://127.0.0.1:8000/items/">Назад к списку товаров</a>
         """
     
     else:
         text = f"""
         <!doctype html>
         <html lang="ru">
+        <meta charset="utf-8">
         <h1>Товар ID #{id}</h1>
         <h2>{items[id-1]['name']}</h2>
         <head>
-            <meta charset="utf-8">
             <title>{items[id-1]['name']}</title>
             <style>
             .img-fixed {{
@@ -82,7 +88,32 @@ def item(request, id: int):
         <br>
         <br>
         Всего на складе: <strong>{items[id-1]['quantity']}</strong>
+        <br>
+        <br>
+        <a href="http://127.0.0.1:8000/items/">Назад к списку товаров</a>
         </html>
         """
        
+    return HttpResponse(text)
+
+def items_def(request):
+
+    text = f"""
+    <!doctype html>
+    <html lang="ru">
+    <meta charset="utf-8">
+    <title>Список товаров</title>
+    <h1>Список товаров</h1>
+    """
+    SKU_List = ""
+    
+    for SKU_index in range(len(items)):
+        SKU_Text = f"""
+        №{SKU_index+1} <a href="http://127.0.0.1:8000/item/{SKU_index+1}"><strong>{items[SKU_index]['name']}</strong></a><br>
+        <hr style="border:none;height:1px;background:#ddd;margin:8px 0">
+        """
+        SKU_List += SKU_Text
+
+    text += SKU_List    
+
     return HttpResponse(text)
