@@ -9,6 +9,15 @@ author = {
     'email': "atix.wind@gmail.com"
 }
 
+items = [
+   {"id": 1, "name": "Кроссовки abibas" ,"quantity":5, "img-url":"https://room78.net/wp-content/uploads/2022/06/gukb4qkvixirslxpsa6fcuk9u7qmvmsnpgj3yl1buo2mnrpttbvzatyzvgq5mv923kp-n16bpgtgiwa6enuhsi0k.jpg"},
+   {"id": 2, "name": "Куртка кожаная" ,"quantity":2, "img-url":"https://img.joomcdn.net/02aaa28e02ea36a98dff0d50629eb6b7abb303a2_original.jpeg"},
+   {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12, "img-url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoB49TGPkGMQeN5BA4Fmv3NH9ZNVTnGJLsfg&s"},
+   {"id": 7, "name": "Картофель фри" ,"quantity":0, "img-url":"https://marr.ru/upload/resize_cache/webp/iblock/21b/adaj3t6awf7l5bpts8j9tpaedis6wqkc.webp"},
+   {"id": 8, "name": "Кепка" ,"quantity":124, "img-url":"https://vintageleder.ua/upload/products/img/large/kepka_huliganka_kozhanaya_muzhskaya_gatsby_art_23_vintage_leder.jpg"},
+]
+
+
 def home(request):
     text = """
     <h1>"Изучаем django"</h1>
@@ -25,4 +34,35 @@ def about(request):
     <small>Телефон:</small> <strong>{author['contact_number']}</strong> <br>
     <small>Почта:</small> <strong>{author['email']}</strong>
     """
+    return HttpResponse(text)
+
+def item(request, id: int):
+        
+    text = f"""
+    <!doctype html>
+    <html lang="ru">
+    <h1>Товар ID #{id}</h1>
+    <h2>{items[id-1]['name']}</h2>
+    <head>
+        <meta charset="utf-8">
+        <title>{items[id-1]['name']}</title>
+        <style>
+        .img-fixed {{
+            width: 360px;       
+            height: 360px;      
+            object-fit: cover;  
+            object-position: center; 
+            border-radius: 10px; 
+        }}
+        </style>
+    </head>
+    <body>
+        <img class="img-fixed" src="{items[id-1]['img-url']}" alt="{items[id-1]['name']}">
+    </body> 
+    <br>
+    <br>
+    Всего на складе: <strong>{items[id-1]['quantity']}</strong>
+    </html>
+    """
+       
     return HttpResponse(text)
