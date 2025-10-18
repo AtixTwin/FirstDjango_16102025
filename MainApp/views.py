@@ -18,12 +18,8 @@ items = [
 ]
 
 
-def home(request):
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Алексеев А.Ю.</i>
-    """
-    return HttpResponse(text)
+def main(request):
+    return render(request, "index.html")
 
 def about(request):
     text = f"""
