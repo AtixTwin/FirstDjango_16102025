@@ -19,7 +19,11 @@ items = [
 
 
 def main(request):
-    return render(request, "index.html")
+    context = {
+        "name": "Алексеев Антон Юрьевич",
+        "email": "atix.wind@gmail.com"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text = f"""
