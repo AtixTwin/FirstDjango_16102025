@@ -1,31 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<<!DOCTYPE html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ SKU.SKU_name }}</title>
+    <title>{{ item.name }}</title>
     <style>
     .img-fixed {
-        width: 360px;       
-        height: 360px;      
-        object-fit: cover;  
-        object-position: center; 
-        border-radius: 10px; 
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display: block;
     }
     </style>
 </head>
 <body>
-    / <a href="/">HOME</a> /
-    <a href="/items/">ITEMS</a> /
-    <a href="/about/">ABOUT</a> /
-    <h1>Товар ID # {{ SKU.SKU_ID }}</h1>
-    <h2>{{ SKU.SKU_name }}</h2>
-    <img class="img-fixed" src=" {{ SKU.SKU_img }} " alt=" {{ SKU.SKU_name }} ">
-    <br>
-    <br>
-    Всего на складе: <strong>{{ SKU.SKU_quantity }}</strong>
-    <br>
-    <br>
+    / <a href="/">HOME</a> / <a href="/items/">ITEMS</a> / <a href="/about/">ABOUT</a> /
+    <h1>Товар ID # {{ item.id }}</h1>
+    <h2>{{ item.name }}</h2>
+    <p><strong>Бренд:</strong> {{ item.brand }}</p>
+
+    <i>{{ item.discription }}</i><br>
+
+    {% if image_url %}
+    <img class="img-fixed" src="{{ image_url }}" alt="{{ item.name }}">
+    {% else %}
+    <p><em>Нет изображения</em></p>
+    {% endif %}
+
+    {% if item.count == 0 %}
+    <p style="color:#b00020"><strong>Товара нет на складе</strong></p>
+    {% else %}
+    Всего на складе: <strong>{{ item.count }}</strong>
+    {% endif %}
+
+    <br><br>
     <a href="/items/">Назад к списку товаров</a>
 </body>
 </html>
