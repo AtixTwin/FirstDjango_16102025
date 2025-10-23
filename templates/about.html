@@ -6,6 +6,19 @@
     <title>About</title>
 </head>
 <body>
-    
+    / <a href="/">HOME</a> /
+    <a href="/items/">ITEMS</a> /
+    <a href="/about/">ABOUT</a> /
+    <h1>"Автор проекта"</h1>
+
+    {# Пример комментария #}
+    {% comment %} Пример коментария 2 - Ctrl+/ {% endcomment %}
+    <!-- {{ author.name }}, это пример коментария 3 (исполняемый, видимый в html) -->
+      
+    <small>Имя:</small> <strong>{{ author.name }}</strong> <br>
+    <small>Отчество:</small> <strong>{{ author.midle_name }}</strong> <br>
+    <small>Фамилия:</small> <strong>{{ author.last_name }}</strong> <br>
+    <small>Телефон:</small> <strong>{{ author.contact_number }}</strong> <br>
+    <small>Почта:</small> <strong>{{ author.email }}</strong>
 </body>
 </html>

@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item</title>
+    <title>{{ SKU.SKU_name }}</title>
+    <style>
+    .img-fixed {
+        width: 360px;       
+        height: 360px;      
+        object-fit: cover;  
+        object-position: center; 
+        border-radius: 10px; 
+    }
+    </style>
 </head>
 <body>
-    
+    / <a href="/">HOME</a> /
+    <a href="/items/">ITEMS</a> /
+    <a href="/about/">ABOUT</a> /
+    <h1>Товар ID # {{ SKU.SKU_ID }}</h1>
+    <h2>{{ SKU.SKU_name }}</h2>
+    <img class="img-fixed" src=" {{ SKU.SKU_img }} " alt=" {{ SKU.SKU_name }} ">
+    <br>
+    <br>
+    Всего на складе: <strong>{{ SKU.SKU_quantity }}</strong>
+    <br>
+    <br>
+    <a href="/items/">Назад к списку товаров</a>
 </body>
 </html>

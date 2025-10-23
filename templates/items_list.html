@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items list</title>
+    <title>Список товаров</title>
 </head>
 <body>
+    / <a href="/">HOME</a> /
+    <a href="/items/">ITEMS</a> /
+    <a href="/about/">ABOUT</a> /
+    <h1>Список товаров</h1>
+    {% for SKU in SKU_List %}
+        №{{ forloop.counter }} <a href="/item/{{ forloop.counter }}"><strong>{{ SKU.name }}</strong></a>
+            {% if SKU.quantity == 0 %}
+                Количество на складе: “товар отсутствует”<br>
+            {% else %}
+                Количество на складе: {{ SKU.quantity }}<br>
+            {% endif %}
+            
+        <hr style="border:none;height:1px;background:#ddd;margin:8px 0">
+    {% endfor %}
     
 </body>
 </html>
