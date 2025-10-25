@@ -1,63 +1,31 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все карточки товаров</title>
-    <style>
-        .nav { margin: 8px 0 16px; }
-        .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 16px;
-        }
-        .card {
-        border: 1px solid #e5e5e5;
-        border-radius: 12px;
-        padding: 14px;
-        text-align: center;
-        min-height: 140px; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 6px;
-        }
-        .title a {
-        text-decoration: none;
-        font-weight: 700;
-        color: #111;
-        }
-        .brand { color: #666; }
-        .qty { }
-        .qty.out { color: #b00020; font-weight: 700; }
-    </style>
-</head>
-<body>
-    <div class="nav">
-        / <a href="/">HOME</a> /
-        <a href="/items/">ITEMS</a> /
-        <a href="/about/">ABOUT</a> /
-    </div>
+{% extends "base.html" %}
+
+{% block title %} Item list {% endblock title %}
+
+{% block content %}
+
+    {{ block.super }}
 
     <h1>Список товаров</h1>
 
-    <div class="grid">
+    <div class="items">
         {% for SKU in SKU_List %}
-        <div class="card">
-            <div class="title">
-            <a href="/item/{{ SKU.id }}/"><strong>{{ SKU.name }}</strong></a>
+        
+            <div class="item">
+                <a href="{% url "item_page" SKU.id %}"><strong>{{ SKU.name }}</strong></a>
+                <div class="brand">{{ SKU.brand|default:"" }}</div><br>
+                <div class="brand">{{ SKU.discription }}</div><br>
+                {% if SKU.count == 0 %}
+                <div class="qty out">товара нет на складе</div>
+                {% else %}
+                <div class="qty">Количество на складе: {{ SKU.count }}</div>
+                {% endif %}
+                
             </div>
-            <div class="brand">{{ SKU.brand|default:"" }}</div><br>
-            <div class="brand">{{ SKU.discription }}</div><br>
-            {% if SKU.count == 0 %}
-            <div class="qty out">товара нет на складе</div>
-            {% else %}
-            <div class="qty">Количество на складе: {{ SKU.count }}</div>
-            {% endif %}
-        </div>
         {% empty %}
         <p>Товары не найдены.</p>
         {% endfor %}
+
     </div>
-</body>
-</html>
+    
+{% endblock %}

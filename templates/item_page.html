@@ -1,9 +1,11 @@
-<<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ item.name }}</title>
+{% extends "base.html" %}
+
+{% block title %} Item page {% endblock title %}
+
+{% block content %}
+
+    {{ block.super }}
+
     <style>
     .img-fixed {
     width: 360px;
@@ -14,21 +16,21 @@
     display: block;
     }
     </style>
-</head>
-<body>
-    / <a href="/">HOME</a> / <a href="/items/">ITEMS</a> / <a href="/about/">ABOUT</a> /
+
     <h1>Товар ID # {{ item.id }}</h1>
     <h2>{{ item.name }}</h2>
     <p><strong>Бренд:</strong> {{ item.brand }}</p>
 
-    <i>{{ item.discription }}</i><br>
+    <i>{{ item.discription }}</i>
+    <br>
+    <br>
 
     {% if image_url %}
     <img class="img-fixed" src="{{ image_url }}" alt="{{ item.name }}">
     {% else %}
     <p><em>Нет изображения</em></p>
     {% endif %}
-
+    <br>
     {% if item.count == 0 %}
     <p style="color:#b00020"><strong>Товара нет на складе</strong></p>
     {% else %}
@@ -36,6 +38,6 @@
     {% endif %}
 
     <br><br>
-    <a href="/items/">Назад к списку товаров</a>
-</body>
-</html>
+    {% include "footer.html" %}
+
+{% endblock content %}

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-</head>
-<body>
-    / <a href="/">HOME</a> /
-    <a href="/items/">ITEMS</a> /
-    <a href="/about/">ABOUT</a> /
+{% extends "base.html" %}
+
+{% block title %} Item page {% endblock title %}
+
+{% block content %}
+
+    {{ block.super }}
+
     <h1>"Автор проекта"</h1>
 
     {# Пример комментария #}
@@ -20,5 +17,5 @@
     <small>Фамилия:</small> <strong>{{ author.last_name }}</strong> <br>
     <small>Телефон:</small> <strong>{{ author.contact_number }}</strong> <br>
     <small>Почта:</small> <strong>{{ author.email }}</strong>
-</body>
-</html>
+
+{% endblock %}
