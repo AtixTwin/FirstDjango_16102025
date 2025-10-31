@@ -37,9 +37,10 @@ def about(request):
 def item_page(request, id: int):
 
     item = get_object_or_404(Item, pk=id)
-    image_url = IMAGE_URLS.get(item.id)    
+    image_url = IMAGE_URLS.get(item.id)
+    colors = item.colors.all()    
     
-    return render(request, "item_page.html", {"item": item, "image_url": image_url})
+    return render(request, "item_page.html", {"item": item, "image_url": image_url, "colors": colors})
     
 
 def items_def(request):

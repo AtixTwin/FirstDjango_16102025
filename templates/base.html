@@ -9,15 +9,16 @@
     <title>
         {% block title %} Document {% endblock title %} 
     </title>
-    {% block static %}
+    {% block style %}
         <link rel="stylesheet" href="{% static "css/style.css" %}">
-    {% endblock static %}
+    {% endblock style %}
 
 </head>
 <body>
-    {% include "header.html" %}
+    
     <main>
         {% block content %}
+            {% include "header.html" %}
         {% endblock content %}
     </main>
     <br>

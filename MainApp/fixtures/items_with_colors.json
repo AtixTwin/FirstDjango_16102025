@@ -1,0 +1,85 @@
+[
+{
+    "model": "MainApp.color",
+    "pk": 1,
+    "fields": {
+        "name": "red"
+    }
+},
+{
+    "model": "MainApp.color",
+    "pk": 2,
+    "fields": {
+        "name": "green"
+    }
+},
+{
+    "model": "MainApp.color",
+    "pk": 3,
+    "fields": {
+        "name": "blue"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 1,
+    "fields": {
+        "name": "Кроссовки",
+        "brand": "abibas",
+        "count": 10,
+        "discription": "А-Абалденные китайские кросовки, покупай и будешь быстро бегать!!",
+        "colors": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 2,
+    "fields": {
+        "name": "Куртка кожаная",
+        "brand": "nuke",
+        "count": 2,
+        "discription": "Стильная, байкерская куртка - для стильный байкеров!",
+        "colors": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 3,
+    "fields": {
+        "name": "Coca-cola 1 литр",
+        "brand": "coca-cola",
+        "count": 12,
+        "discription": "Пейте без остановкииии - напитки из Че... ой, это не отсюда...",
+        "colors": []
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 4,
+    "fields": {
+        "name": "Картофель фри",
+        "brand": "hand made",
+        "count": 0,
+        "discription": "Бабушка жарила, специально для голодных, но весёлых!!",
+        "colors": []
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 5,
+    "fields": {
+        "name": "Кепка",
+        "brand": "MR.Dedushka",
+        "count": 124,
+        "discription": "Очень удобная, защищает от ветра, падагры, ревматизма и импотенции!",
+        "colors": []
+    }
+}
+]
